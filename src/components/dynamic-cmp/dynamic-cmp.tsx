@@ -1,32 +1,31 @@
-import { Component, Prop, Element, Method,State } from '@stencil/core';
+import { Component, Prop, Element, Method } from '@stencil/core';
 
 const COMPONENT_PROP_ATTR = 'component-prop-';
 
 @Component({
-    tag: 'dynamic-cmp',
-    styleUrl: 'dynamic-cmp.css'
+    tag: 'dynamic-cmp'
 })
 export class DynamicCmp {
 
     /**
-     * Name of component to be lazy loaded 
+     * Name of component to be loaded/unloaded 
      */
     @Prop() component?: string;
 
     /**
-     * Props of component that will be lazy loaded
+     * Props of component that will be loaded/unloaded
      */
     @Prop({mutable: true}) componentProps?: { [key: string]: any } = {};
 
     /**
-     * Prop of component to be lazy loaded 
+     * Prop of component to be loaded/unloaded 
      */
     @Prop() 'component-prop-?'?: string;
 
     /**
-     * Name of component to be lazy loaded 
+     * Decides whether component is loaded at first or not 
      */
-    @Prop() rendered: boolean = false;
+    @Prop({mutable: true}) rendered: boolean = false;
 
     @Element() el;
 
